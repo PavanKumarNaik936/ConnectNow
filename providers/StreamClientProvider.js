@@ -28,7 +28,7 @@ import Loader from "@/components/Loader";
         })
         console.log(tokenProvider);
         setVideoClient(client);
-        return () => client.disconnect();
+        return () => client.disconnectUser();
     },[user,isLoaded]);
     
     // if(!user) return <Loader/>

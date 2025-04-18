@@ -1,22 +1,38 @@
 'use client'
 import { Button } from '@/components/ui/button'
 import { useUser } from '@clerk/nextjs'
+import { useStreamVideoClient } from '@stream-io/video-react-sdk'
 import React from 'react'
 import { toast } from 'sonner'
+import { useGetCallById } from '../../../../../hooks/useGetCallById'
+import { useRouter } from 'next/navigation'
 
 const Table =({title,description})=>{
-  return <div className='fle flex-col items-start gap-2  lg:flex-row'>
+  return <div className='flex flex-col items-start gap-2  lg:flex-row'>
     <h1 className='text-base font-medium text-sky-1 md:text-md lg:min-w-32'>{title}</h1>
-    <h1 className='truncate text-sm font-bold max-sm:max-w-[320px] lg:text-xl'>{description}</h1>
+    <h1 className='truncate text-sm font-bold max-sm:max-w-[320px] lg:text-lg'>{description}</h1>
   </div>
 }
 const PersonalRoom = () => {
   const {user} = useUser();
+  const client = useStreamVideoClient();
   const meetingId=user?.id;
+  const router =useRouter();
   const meetingLink = `${process.env.NEXT_PUBLIC_BASE_URL}/meeting/${meetingId}?personal=true`;
-
+  const {call}=useGetCallById(meetingId);
   const startRoom = async ()=>{
+    if(!client || !user) return ;
+  if(!call){
+    const newCall=client.call('default',meetingId)
+    await newCall.getOrCreate({
+      data:{
+          starts_at:new Date().toISOString(),
+      }
+  })
+  }
 
+  router.push(`/meeting/${meetingId}?personal=true`)
+    
   }
   return (
     <section className='flex size-full flex-col gap-10 text-white'>

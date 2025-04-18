@@ -81,10 +81,10 @@ const CallList = ({type}) => {
             }
             title={
               isCall
-                ? meeting.state?.custom?.description || "No Description"
+                ? meeting.state?.custom?.description?.substring(0,26) || "Personal Meeting"
                 : isRecording
-                ? meeting.filename?.substring(0, 20) || "No Description"
-                : "No Description"
+                ? meeting.filename?.substring(0, 20) || "Personal Meeting"
+                : "Personal Meeting"
             }
             date={
               isCall && meeting.state?.startsAt
