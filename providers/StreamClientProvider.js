@@ -181,11 +181,11 @@ export const StreamVideoProvider = ({ children }) => {
           },
         });
         setVideoClient(video);
-        console.log(video);
+        // console.log(video);
         // 2. Initialize Chat Client
         chat = StreamChat.getInstance(apiKey);
         const token = await tokenProvider();
-        console.log(chat);
+        // console.log(chat);
         // Validate token before connecting
         if (!token) throw new Error("Failed to generate chat token");
         
