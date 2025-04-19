@@ -1,15 +1,14 @@
 'use client'
-import React, { useState } from 'react'
-import Image from 'next/image'
 import HomeCard from './HomeCard'
 import { useRouter } from 'next/navigation'
 import MeetingModal from './MeetingModal'
 import { useUser } from '@clerk/nextjs'
 import { toast } from "sonner"
 import ReactDatePicker from 'react-datepicker';
-import { descending, useStreamVideoClient } from '@stream-io/video-react-sdk'
+import {  useStreamVideoClient } from '@stream-io/video-react-sdk'
 import { Textarea } from './ui/textarea'
 import { Input } from './ui/input'
+import { useState } from 'react'
 const MeetingTypeList = () => {
     const [meetingState,setMeetingState]=useState();
     const router =useRouter();

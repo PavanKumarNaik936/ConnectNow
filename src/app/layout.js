@@ -1,7 +1,7 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { ClerkProvider } from "@clerk/nextjs";
-
+// import { UserTokenProvider } from "@/app/userContextToken";
 import "@stream-io/video-react-sdk/dist/css/styles.css";
 import "react-datepicker/dist/react-datepicker.css";
 import { Toaster } from "@/components/ui/sonner"
@@ -43,12 +43,12 @@ export default function RootLayout({ children }) {
       }}
     >
 
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-dark-2`}
-      >
-        {children}
-        <Toaster />
-      </body>
+{/* `       <UserTokenProvider> */}
+          <body className={`${geistSans.variable} ${geistMono.variable} antialiased bg-dark-2`}>
+            {children}
+            <Toaster />
+          </body>
+        {/* </UserTokenProvider> */}
       </ClerkProvider>
     </html>
   );
