@@ -42,12 +42,12 @@ const MobileNav = () => {
             <Link href='/' className='flex items-center gap-1'>
                 <Image 
                 src='/icons/logo.svg'
-                alt='Yoom logo'
+                alt='connectNOW logo'
                 width={32}
                 height={32}
                 className=' max-sm:size-10'
                 />
-                <p className='text-[26px] font-extrabold text-white max-sm:hidden'>Yoom</p>
+                <p className='text-[26px] font-extrabold text-white max-sm:hidden'>connectNOW</p>
             </Link>
             <SheetClose asChild>
             <button className="absolute top-4 right-4 p-2 text-white hover:text-red-500">
